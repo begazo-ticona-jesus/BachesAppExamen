@@ -163,7 +163,7 @@ fun ItemReport (navController: NavController, pothole: PotholeEntity, mPotholeVi
 
         Column(
             verticalArrangement = Arrangement.Center
-        ) {
+        ) {/*
             IconButton(
                 onClick = {navController.navigate(Routes.ReportEdit.route)}
             ) {
@@ -174,7 +174,7 @@ fun ItemReport (navController: NavController, pothole: PotholeEntity, mPotholeVi
                         .padding(10.dp)
                         .size(40.dp)
                 )
-            }
+            }*/
             IconButton(
                 onClick = {
                     showDialog.value = true

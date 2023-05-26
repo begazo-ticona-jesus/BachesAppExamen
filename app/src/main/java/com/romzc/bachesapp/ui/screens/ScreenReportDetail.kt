@@ -20,9 +20,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.NavController
@@ -56,24 +61,40 @@ fun ScreenReportDetail (navController: NavController, id: Int){
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(50.dp),
+            .padding(100.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "ITEM 1")
-
         val bitmap: Bitmap? = getBitmapFromPath(pothole.value?.potImg?: "")
         Box(
-            modifier = Modifier.size(140.dp),
+            modifier = Modifier.size(250.dp),
         ) {
             ImageWithDefault(imageMap = bitmap, contentDescription = "image")
         }
 
-        Text(text = pothole.value?.potDesc ?: "")
-        Text(text = pothole.value?.potDate ?: "")
+        Text(
+            text = pothole.value?.potDesc ?: "",
+            modifier =Modifier.padding(10.dp),
+            style = TextStyle(
+                fontSize = 20.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = Color.DarkGray,
+                textAlign = TextAlign.Center
+            )
+        )
+        Text(
+            text = pothole.value?.potDate ?: "",
+            modifier =Modifier.padding(10.dp),
+            style = TextStyle(
+                fontSize = 15.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = Color.DarkGray,
+                textAlign = TextAlign.Center
+            )
+        )
 
         Spacer(modifier = Modifier.width(20.dp))
-        CommonButton(text = "Cancelar", onClick = { navController.popBackStack() })
+        CommonButton(text = "Regresar", onClick = { navController.popBackStack() })
     }
 
 }
